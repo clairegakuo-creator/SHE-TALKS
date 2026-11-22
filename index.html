@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHE TALKS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <nav class="nav-bar" aria-label="Main navigation">
+      <div class="brand">SHE TALKS</div>
+      <button id="nav-home" class="nav-btn active" type="button">Home</button>
+      <button id="nav-profile" class="nav-btn" type="button">Profile</button>
+      <button id="nav-ai" class="nav-btn" type="button">Ask AI</button>
+    </nav>
+
+    <main class="main-column">
+      <header class="page-header">
+        <h1 id="page-title">Home</h1>
+      </header>
+
+      <div id="status-area" class="status-area hidden"></div>
+
+      <section id="home-view">
+        <form id="compose-form" class="compose-box">
+          <div id="compose-avatar" class="avatar-circle">ME</div>
+          <div class="compose-right">
+            <textarea
+              id="tweet-input"
+              rows="3"
+              placeholder="What is happening?"
+              aria-label="Write a post"
+            ></textarea>
+            <div class="compose-footer">
+              <span id="char-counter" class="char-counter">280</span>
+              <button id="post-btn" type="submit" class="primary-btn">Post</button>
+            </div>
+          </div>
+        </form>
+
+        <div id="feed-list" class="feed-list"></div>
+      </section>
+
+      <section id="profile-view" class="profile-view hidden"></section>
+    </main>
+
+    <aside class="right-sidebar">
+      <div class="card">
+        <h2>Who to follow</h2>
+        <div id="who-to-follow-list"></div>
+      </div>
+    </aside>
+  </div>
+
+  <button id="ai-fab" class="ai-fab" type="button" aria-label="Open Ask AI chat">
+    AI
+  </button>
+
+  <section id="ai-panel" class="ai-panel hidden" aria-label="Ask AI panel">
+    <div class="ai-panel-header">
+      <h2>Ask AI</h2>
+      <button id="ai-close-btn" class="link-btn" type="button">Close</button>
+    </div>
+
+    <div class="ai-key-bar">
+      <input
+        id="openrouter-key-input"
+        type="password"
+        placeholder="OpenRouter API key"
+      />
+      <button id="save-key-btn" class="small-btn" type="button">Save</button>
+    </div>
+
+    <div id="ai-messages" class="ai-messages">
+      <div class="ai-msg assistant">
+        Ask a question or click Summarize with AI on any post.
+      </div>
+    </div>
+
+    <form id="ai-form" class="ai-input-row">
+      <input
+        id="ai-prompt-input"
+        type="text"
+        placeholder="Ask about any post"
+        autocomplete="off"
+      />
+      <button type="submit" class="primary-btn">Send</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
