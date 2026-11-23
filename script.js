@@ -651,6 +651,10 @@ aiCloseBtn.addEventListener("click", closeAiPanel);
 
 saveKeyBtn.addEventListener("click", function () {
   const key = keyInput.value.trim();
+  if (!key) {
+    addChatBubble("assistant", "Please paste an OpenRouter API key before clicking Save.");
+    return;
+  }
   localStorage.setItem("shetalks_openrouter_key", key);
   addChatBubble("assistant", "API key saved.");
 });
@@ -665,7 +669,7 @@ function addChatBubble(sender, text, id) {
 }
 
 async function sendToOpenRouter(promptText, visibleText) {
-  const apiKey = localStorage.getItem("shetalks_openrouter_key") || "";
+  const apiKey = (localStorage.getItem("shetalks_openrouter_key") || "").trim();
   if (!apiKey) {
     openAiPanel();
     addChatBubble("assistant", "Please enter your OpenRouter API key above first.");
@@ -683,7 +687,7 @@ async function sendToOpenRouter(promptText, visibleText) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + apiKey
+        "Authorization": "Bearer " + apiKey
       },
       body: JSON.stringify({
         model: OPENROUTER_MODEL,
